@@ -1,0 +1,57 @@
+<mat-card class="card-container" style="width: 60%;
+margin-left: auto;
+margin-right: auto;
+margin-top: 30px;
+border-radius: 10px;">
+<h1 style="margin: 0px; padding: 0px; margin-bottom: 20px;">EDIT CUSTOMER</h1>
+
+<div style="    background-color: rgb(240, 241, 255); padding: 25px;">
+    <form #editForm ="ngForm" (ngSubmit)="onSubmit()">
+      <div class="column">
+        <mat-form-field>
+          <mat-label>salary</mat-label>
+          <input  name="salary" [(ngModel)]="salary" type="number" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>totalRelationship</mat-label>
+          <input name="totalRelationship" [(ngModel)]="totalRelationship" type="number" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Inactive month in last 12 month</mat-label>
+          <input name="inactiveMonth" [(ngModel)]="inactiveMonth" type="number" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Number of contacts in last 12 month</mat-label>
+          <input name="numberOfContacts" [(ngModel)]="numberOfContacts" type="number" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Total Revolving balance on Credit card</mat-label>
+          <input  name="totalRevolvingBal" [(ngModel)]="totalRevolvingBal" type="number" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Change Transaction amount (Last Q4 over Q1)</mat-label>
+          <input name="changeTransFromQ1ToQ4" [(ngModel)]="changeTransFromQ1ToQ4" type="number" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Total Transactions amount (last 12 months)</mat-label>
+          <input name="totalTransChange" [(ngModel)]="totalTransChange" type="number" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Total Transactions count (last 12 months)</mat-label>
+          <input name="totalTransCount" [(ngModel)]="totalTransCount" type="number" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Change in Transaction count (Q4 over Q1)</mat-label>
+          <input name="totalCtChangeQ1ToQ4" [(ngModel)]="totalCtChangeQ1ToQ4" type="number" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Average utilization ratio in credit card</mat-label>
+          <input name="avgRatio" [(ngModel)]="avgRatio" type="number" matInput>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="primary" type="submit" style="color: white; background-color: #374383;">Update</button>
+        </div>
+       </div>
+      </form>
+    </div>
+</mat-card>

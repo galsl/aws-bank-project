@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "final-project-ang"
+  },
+  "targets": {
+    "final-project-ang": {
+      "hosting": {
+        "final-project": [
+          "final-project-ang"
+        ]
+      }
+    }
+  }
+}

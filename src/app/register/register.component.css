@@ -1,0 +1,42 @@
+.card-container{
+    width: 700px;
+    height: 650px;
+
+    margin-left: auto;
+    margin-right: auto;
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 0;
+    top: 110px; position: relative;
+}
+
+
+.mat-form-field{
+    width: 400px;
+    border-radius: 0;
+    
+}
+
+
+.mat-raised-button:enabled{
+    background-color: #106faf;
+    color: white;
+    box-shadow: 0px 0px 0px grey;
+    border-radius: 0;
+
+
+
+  }
+.mat-raised-button:disabled{
+    background-color: rgb(212, 212, 212);
+    border-radius: 0;
+
+
+
+}
+
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #3b55ac;
+  }

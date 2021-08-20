@@ -1,0 +1,88 @@
+table {
+    width: 97%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    background-color: rgb(240, 241, 255);
+
+
+  }
+  
+  tr.example-detail-row {
+    height: 0;
+  }
+  
+  tr.example-element-row:not(.example-expanded-row):hover {
+    background: whitesmoke;
+  }
+  
+  tr.example-element-row:not(.example-expanded-row):active {
+    background: #efefef;
+  }
+  
+  .example-element-row td {
+    border-bottom-width: 0;
+  }
+  
+  .example-element-detail {
+    overflow: hidden;
+  }
+  
+  .example-element-diagram {
+    min-width: 80px;
+    padding: 8px;
+    font-weight: lighter;
+    margin: 8px 0;
+    height:175px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .example-element-symbol {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: normal;
+  }
+  
+  .example-element-description {
+    padding: 16px;
+  }
+  
+  .example-element-description-attribution {
+    opacity: 0.5;
+  }
+
+.income-element{
+    padding:4px 0px;
+}
+
+mat-chip {
+    max-width: 200px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .column{
+      text-align: center;
+  }
+  .mat-chip-list-stacked .mat-chip-list-wrapper{
+    align-items: center;
+  }
+
+  mat-chip-list{
+    display: flex;
+    justify-content: center;
+  }
+
+  .mat-raised-button:enabled{
+    background-color: #d19615;
+    color: white;
+    ;
+ ;
+
+
+
+  }
+.mat-raised-button:disabled{
+    background-color: rgb(212, 212, 212);
+  }

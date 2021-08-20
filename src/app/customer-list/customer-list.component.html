@@ -1,0 +1,72 @@
+<mat-card class="card-container" style="border-radius: 10px; width: 80%;
+margin-left: auto;
+margin-right: auto;
+margin-top: 30px;">
+
+<h1 style="margin: 0px; padding: 0px;">CUSTOMERS</h1>
+<br>
+<button (click)= "router.navigate(['customer/list/create'])"  style="margin-left: 20px; height: 45px;" mat-stroked-button>Add Customer</button>
+
+<table mat-table
+       [dataSource]="customers" multiTemplateDataRows
+       class="mat-elevation-z8">
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+    <th class="column" mat-header-cell *matHeaderCellDef> {{column}} </th>
+    <td class="column" mat-cell *matCellDef="let element"> 
+        <div *ngIf="column !== 'gender'">
+        {{element.generalData[column]}}
+        </div>
+        <div *ngIf="column === 'gender'">
+        <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+            <mat-chip   color="primary" *ngIf="element.generalData[column] !== 'Female'" selected>{{element.generalData[column]}}</mat-chip>
+            <mat-chip  color="accent" *ngIf="element.generalData[column] === 'Female'" selected>{{element.generalData[column]}}</mat-chip>
+        </mat-chip-list>
+      </div>
+      <div *ngIf="column === 'predict'">
+          <div *ngIf="element.predict === undefined || element.predict===-1">Not Predicted Yet</div>
+        <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+            <mat-chip  style="background-color: #f7a438;" *ngIf="element.predict == 'yes'" selected>WILL DROP</mat-chip>
+            <mat-chip style="background-color: #52db87;" *ngIf="element.predict == 'no' && element.predict !== -1" selected>WILL REMAIN</mat-chip>
+        </mat-chip-list>
+      </div>
+      <div *ngIf="column === 'actions'">
+        <button mat-button  [disabled]="element.predict !== undefined && element.predict !== -1" (click)="predict(element.id)">Predict</button> |
+        <button click-stop-propagation mat-button color="primary"  (click)="editCustomer(element.id)">Edit</button> |
+        <button click-stop-propagation mat-button color="warn" (click)="deleteCustomer(element.id)">Delete</button>
+      </div>
+     </td>
+  </ng-container>
+
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+      <div class="example-element-detail"
+           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <div class="example-element-diagram">
+        <div class="diagram-col">
+          <div class="income-element">Average card Utilization ratio: {{element.incomeData.avgRatio}} </div>
+          <div class="income-element">Change transaction from Q1 to Q4: {{element.incomeData.changeTransFromQ1ToQ4}} </div>
+          <div class="income-element">Number of month inactive in last 12 months: {{element.incomeData.inactiveMonth}}</div>
+          <div class="income-element">Number of contacts in last 12 months: {{element.incomeData.numberOfContacts}}</div>
+          <div class="income-element">Change in transaction count from Q4 to Q1: {{element.incomeData.totalCtChangeQ1ToQ4}}</div>
+        </div>
+        <div class="diagram-col">
+          <div class="income-element">Change in transaction count from Q4 to Q1: {{element.incomeData.totalCtChangeQ1ToQ4}}</div>
+          <div class="income-element">Total number of products held by the customer: {{element.incomeData.totalRelationship}}</div>
+          <div class="income-element">Total revolving balance on the credit card: {{element.incomeData.totalRevolvingBal}}</div>
+          <div class="income-element">Total transaction amount: {{element.incomeData.totalTransChange}}</div>
+          <div class="income-element">Total transaction count: {{element.incomeData.totalTransCount}}</div>
+        </div>
+        </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table></mat-card>
+<!-- <div>Hello world</div> -->

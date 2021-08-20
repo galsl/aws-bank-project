@@ -1,0 +1,104 @@
+<mat-card class="card-container" style="width: 60%;
+margin-left: auto;
+margin-right: auto;
+margin-top: 30px;
+border-radius: 10px;">
+<h1 style="margin: 0px; padding: 0px; margin-bottom: 20px;">NEW CUSTOMER</h1>
+
+<mat-horizontal-stepper linear #stepper  style="    background-color: rgb(240, 241, 255);">
+  <mat-step  [stepControl]="generalInfo" [editable]="isEditable">
+    <form  [formGroup]="generalInfo">
+      <ng-template matStepLabel>Fill Out General Info</ng-template>
+      <mat-form-field >
+        <mat-label>Name</mat-label>
+        <input matInput required [(ngModel)]="name" formControlName="generalCtrl1" placeholder="Last name, First name">
+      </mat-form-field>
+      <mat-form-field >
+        <mat-label>Gender</mat-label>
+        <mat-select required  formControlName="generalCtrl2" [(ngModel)]="selectedGender" name="gender">
+          <mat-option *ngFor="let g of gender" [value]="g">
+            {{g}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input required type="email" matInput  [(ngModel)]="email" formControlName="generalCtrl3" placeholder="example@emaple.com">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Salary</mat-label>
+            <input required matInput type="number" [(ngModel)]="salary" formControlName="generalCtrl4" placeholder="3000 €">
+          </mat-form-field>
+          <mat-form-field >
+            <mat-label>Currency</mat-label>
+            <mat-select required formControlName="generalCtrl5" [(ngModel)]="currency" name="currency">
+              <mat-option *ngFor="let curr of currencyList" [value]="curr">
+                {{curr}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      <div>
+        <button mat-button color="primary" matStepperNext style="background-color: rgb(99, 140, 163); color: white;">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="incomeInfo" [editable]="isEditable">
+    <form [formGroup]="incomeInfo">
+      <ng-template matStepLabel>Fill Out Income Details</ng-template>
+      <mat-form-field>
+        <mat-label>Number of products held</mat-label>
+        <input  required formControlName="incomeCtrl1" placeholder="for example: 6" [(ngModel)]="totalRelationship" type="number" matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Inactive month in last 12 month</mat-label>
+        <input required formControlName="incomeCtrl2" placeholder="for example:5" [(ngModel)]="inactiveMonth" type="number" matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Number of contacts in last 12 month</mat-label>
+        <input required formControlName="incomeCtrl3" placeholder="for example: 3" [(ngModel)]="numberOfContacts" type="number" matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Total Revolving balance on Credit card</mat-label>
+        <input required formControlName="incomeCtrl4" placeholder="for example: 1657" [(ngModel)]="totalRevolvingBal" type="number" matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Change Transaction amount (Last Q4 over Q1)</mat-label>
+        <input required formControlName="incomeCtrl5" placeholder="for example:0.67" [(ngModel)]="changeTransFromQ1ToQ4" type="number" matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Total Transactions amount (last 12 months)</mat-label>
+        <input required formControlName="incomeCtrl6" placeholder="2786" [(ngModel)]="totalTransChange" type="number" matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Total Transactions count (last 12 months)</mat-label>
+        <input required formControlName="incomeCtrl7" placeholder="for example:55" [(ngModel)]="totalTransCount" type="number" matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Change in Transaction count (Q4 over Q1)</mat-label>
+        <input required formControlName="incomeCtrl8" placeholder="for example: 0.34" [(ngModel)]="totalCtChangeQ1ToQ4" type="number" matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Average utilization ratio in credit card</mat-label>
+        <input required formControlName="incomeCtrl9" placeholder="for example: 1.63" [(ngModel)]="avgRatio" type="number" matInput>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious style="background-color: rgb(168, 184, 194); color: white; margin-right: 20px;">Back</button>
+        <button mat-button matStepperNext style="background-color: rgb(99, 140, 163); color: white;">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <h2 style="font-weight: 200;">Thank you for register new customer to our bank</h2> 
+    <div>
+      <button mat-raised-button color="primary" (click)="onFormCompleted()" style="background-color: #2a346b;">Add Customer</button>
+    </div>
+  </mat-step>
+  <ng-template matStepperIcon="phone">
+    <mat-icon>call_end</mat-icon>
+  </ng-template>
+  <ng-template matStepperIcon="chat">
+    <mat-icon>forum</mat-icon>
+  </ng-template>
+</mat-horizontal-stepper>
+</mat-card>

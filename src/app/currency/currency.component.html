@@ -1,0 +1,58 @@
+<mat-card class="card-container" style="width: 60%;
+margin-left: auto;
+margin-right: auto;
+margin-top: 30px;
+border-radius: 10px;">
+<h1 style="margin: 0px; padding: 0px; margin-bottom: 20px;">CONVERT CUSTOMER SALARY</h1>
+
+<div class="convertor-container">
+        <div class="input-container">
+            <form class="example-form" style="margin-left: 15%;">
+                <mat-form-field appearance="outline">
+                    <mat-label>Customer</mat-label>
+                    <mat-select [(ngModel)]="selectedCustomer" name="customers" (selectionChange)="onCustomerSelect()">
+                      <mat-option *ngFor="let customer of customers" [value]="customer">
+                        {{customer.generalData.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                <mat-form-field class="example-full-width" style="margin-left: 100px;">
+                  <mat-label>Salary</mat-label>
+                  <input  disabled matInput placeholder="Customer Salary" readonly value="{{salary}}">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Current Currency</mat-label>
+                    <input disabled matInput  readonly value="{{currency}}">
+                  </mat-form-field>
+                  <br>                  <br>
+
+                  <div>
+                    <img src="https://cdn4.iconfinder.com/data/icons/market-and-economics-3-2/512/111-512.png" style="width:170px ;height:170px ; position: relative; top: 0px; 
+                    left: 240px;">
+
+                  </div>
+                  <br>
+                  <br>
+
+                <mat-form-field appearance="outline" >
+                    <mat-label>New Currency</mat-label>
+                    <mat-select [disabled] ="cust_btn" [(ngModel)]="selectedCurrency" (selectionChange)="convertCurrency()"  name="selectedCurrency">
+                      <mat-option *ngFor="let curr of currencyList" [value]="curr">
+                        {{curr}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" style="margin-left: 100px;">
+                    <mat-label>Converted Salary</mat-label>
+                    <input matInput  readonly value="{{result}}">
+                  </mat-form-field>
+            </form>
+        </div>
+        <div class="button-container">
+            <button mat-raised-button [disabled] ="save_btn"  (click)="saveConvert()"  color="primary" style="margin-left: 470px;">Save Result</button>
+        </div>
+        
+    </div>
+
+
+  </mat-card>

@@ -1,0 +1,43 @@
+<div style="width: 100%; height: 100%; background-image: url('../../assets/background.jpg');">
+
+    <mat-card class="card-container">
+    <h1 style="margin-top: 30px; font-weight: 800;">Login</h1>
+    <h4 >    to access your account</h4>
+
+    <form #loginForm = "ngForm" (ngSubmit) = "onSubmit()" >
+        <div>
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="example:you@you.com"
+                    [(ngModel)]= "email"
+                    name = "email"
+                    (change)="clearError()"
+                    required >
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="example:12345678"
+                    [(ngModel)]= "password"
+                    (change)="clearError()"
+                    name = "password"
+                    type="password"
+                    required >
+                </mat-form-field>
+                <br><span style="color:rgb(199, 8, 8); font-size: 13px; text-align: left; float: left; height: 15px;" >{{ErrorMessage}}</span>
+                <br>               
+
+            </div>
+            <mat-divider></mat-divider>
+            <br>            <br>
+
+         <button  [disabled] ="!loginForm.form.valid" type = "submit" mat-raised-button color="primary" style="width: 200px; height: 50px;">Login</button>
+        </div>
+        
+    </form>
+    <br/>
+    <span>New user?<a href="/register"> Create account</a></span>
+</mat-card> 
+</div>

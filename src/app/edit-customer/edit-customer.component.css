@@ -1,0 +1,16 @@
+.column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-container{
+    padding:50px;
+    text-align: center;
+}
+
+.mat-form-field {
+    width: 320px;
+    height: 70px;
+}

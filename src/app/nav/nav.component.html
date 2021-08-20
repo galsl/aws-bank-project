@@ -1,0 +1,83 @@
+<mat-sidenav-container class="sidenav-container">
+  
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false"  *ngIf = "(authService.getUser()|async)">
+
+      <button style="width:80px ;height:80px;  background-size:100% 100%;
+      background-image:url({{ProfileImage}});
+      margin-top: 30px; margin-left: 8px; background-color: rgb(203, 218, 230);" mat-fab aria-label="Example icon button with a delete icon" 
+      (click)="InputImage.click()">
+
+      <input hidden  name="uploadImage" type="file" #InputImage id="uploadImage" (change)="uploadImage($event)" 
+      accept="image/*"  />
+
+      </button>
+    <mat-nav-list>
+      
+    <!--
+  <a mat-list-item routerLink="customer/create" routerLinkActive="active">Insert Customer</a>
+  
+      <a mat-list-item routerLink ="/convertor" routerLinkActive="active">Convert Currency</a>
+-->
+<a mat-list-item routerLink ="/customer/list" routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}" style="height: 70px; padding: 0px; margin-top: 30px;">
+
+  <div>  <mat-icon style="color: white; font-size: 40px;position: relative; top: -10px; left: 7px; ">recent_actors</mat-icon>
+  </div>
+  <h4  style="display: block; margin-left: 0px; position: relative; top: 25px; left: -27px;  font-weight: lighter; font-size: 12px;  color:#fff;">Customers</h4>
+  
+
+<br>
+
+</a>
+<a mat-list-item routerLink ="/convertor" routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}" style="height: 85px; padding: 0px;">
+
+  <div>  <mat-icon style="color: white; font-size: 35px;position: relative; top: -15px; left: 9px; ">paid</mat-icon>
+  </div>
+  <h4  style="display: block; margin-left: 0px; position: relative; top: 27px; left: -22px;  font-weight: lighter; font-size: 12px;   color:#fff; text-align: center; ">Currency Convert</h4>
+
+
+<br>
+
+</a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    
+    <mat-toolbar class="toolbar-container" style="height: 51px;">
+      <img src="https://dvh1deh6tagwk.cloudfront.net/finder-us/wp-uploads/2016/10/USCCF-credit-one-logo-featured.png" style="width:150px ;height:140px; position: absolute; top: -47px;">
+
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+  
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">Menu</mat-icon>
+      </button>
+      <div class="nav-text">
+  
+      <div class="links-group">
+     
+      </div>
+
+      <button mat-button (click)="logout(); ProfileImage= 'https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG.png'" *ngIf = "(authService.getUser()|async)"  >
+        LOG OUT
+      </button>
+
+     <button mat-button routerLink="/register" *ngIf = "!(authService.getUser()|async)" >
+      SIGN UP
+    </button>  
+    <button mat-button routerLink = "/login" *ngIf = "!(authService.getUser()|async)"  >
+      LOGIN
+      </button>
+      </div>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
